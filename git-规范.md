@@ -1,6 +1,50 @@
 # Git 规范
 
-在 sourceTree 中使用
+在 sourceTree 中使用:
+
+![](./images/st.png)
+
+
+
+```flow
+flow
+st=>start: 开始
+e=>end: 结束
+op1=>operation: 开发 A 功能
+op2=>operation: 从 develop 拉取 feature/A-20200807 分支
+op3=>operation: A 功能开始开发
+cd1=>condition: 测试服测试是否通过?
+op4=>operation: A 功能开发结束, 从 develop 拉取 release/v1.0.0 分支, 并合入 feature/A-2020087
+op5=>operation: 开发开发
+op6=>operation: release/v1.0.0 分支提测
+op7=>operation: 在 feature/A-2020087 
+分支修复 Bug 后合并 
+op8=>operation: 通知测试, 并备注影响范围
+op9=>operation: release/v1.0.0 分支上预生产测试
+op10=>operation: 打 tag 准备上线, 提前通知相关人员支持上线
+op11=>operation: 上线验证, 观察服务器稳定性
+cd2=>condition: 预生产测试是否通过?
+cd3=>condition: 线上是否出现问题?
+op12=>operation: 上线成功
+op13=>operation: release/v1.0.0 分支合并到 master 分支,
+master 分支合并到 develop 分支, 
+并隔日通知所有开发人员合并 develop 分支到当前功能分支(feature/B-20200808),
+7天后删除 feature/A-2020087 分支
+op14=>operation: 观察日志, 检查版本号等手段解决问题.
+op15=>operation: 在 release/v1.0.0 分支修改
+op16=>operation: 通知测试, 并备注影响范围.
+
+st->op1->op2->op3->op4->op6->cd1
+cd1(yes)->op9->cd2
+cd1(no)->op7->op8(right)->cd1
+cd2(yes)->op10->op11->cd3
+cd2(no)->op15->op16(right)->cd2
+cd3(yes)->op12->op13->e
+cd3(no)->op14(top)->op11
+op5->e
+```
+
+
 
 
 
@@ -53,6 +97,7 @@
 
 - **hotfix 分支**
 - 紧急修复线上 bug 分支
+  
   - 当线上版本出现 bug 时，从 master 分支切出一个 `hotfix/xxx` 分支，完成 bug 修复，然后将 `hotfix/xxx` 合并到 master 和 develop 分支(如果此时存在 release 分支，则应该合并到 release 分支)，合并完成后删除该 `hotfix/xxx` 分支
 
 以上就是在项目中应该出现的分支以及每个分支功能的说明。 其中稳定长期存在的分支只有 master 和 develop 分支，别的分支在完成对应的使命之后都会合并到这两个分支然后被删除。**简单总结如下：**
