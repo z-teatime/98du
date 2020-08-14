@@ -11,6 +11,14 @@
 3. ballVideo 上线要对 active 做不同的打包.
 4. 开发完后, app确认没啥问题. 直接上线, 不用等. 
 
+```html
+<string name="about_url">http://h5xy.uheixia.com/XYAppErtongguoxue/About.html</string> 
+<string name="contact_url">http://h5xy.uheixia.com/XYAppErtongguoxue/ContactUs.html</string> 
+<string name="protocol_url">http://h5xy.uheixia.com/XYAppErtongguoxue/UserProtocol.html</string> 
+<string name="policy_url">http://h5xy.uheixia.com/XYAppErtongguoxue/PrivacyPolicy.html</string> 
+<string name="tortsstatement_url">http://h5xy.uheixia.com/XYAppErtongguoxue/Tortsstatement.html</string>
+```
+
 
 
 ---
