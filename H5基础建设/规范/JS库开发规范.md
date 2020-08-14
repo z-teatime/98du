@@ -71,11 +71,7 @@
 
 
 
-# Git commit规范
-
-代码的提交应该遵守规范，这里推荐一个我的规范
-
-## 测试
+# 单元测试
 
 没有单元测试的库都是耍流氓，单元测试能够保证每次交付都是有质量保证的，业务代码由于一次性和时间成本可以不做单元测试，但开源库由于需要反复迭代，对质量要求又极高，所以单元测试是必不可少的
 
@@ -165,11 +161,16 @@ node_js:
 
 
 
-# jsmini
+# jslib-base
 
-jsmini是基于jslib-base的一系列库，jsmini的理念是小而美，并且无第三方依赖，开源了很多能力，能够
-助力库开发者
+组件库/工具库的开发模板.
+[Git地址][2] 
+
+
+
+
 
 ---
 
 [1]: https://mp.weixin.qq.com/s/Kx335LCx3VN9AZRjizBu-A
+[2]: https://github.com/yanhaijing/jslib-base
